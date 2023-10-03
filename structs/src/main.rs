@@ -1,50 +1,58 @@
 use std::fmt;
 
 #[derive(Clone)]
+// defining custom struct for point
 struct Point{
     x: f64,
     y: f64,
 }
 
+// implementing display for custom struct Point
 impl fmt::Display for Point{
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result{
         write!(f, "\tX point is {}, Y point is {}", self.x, self.y)
     }
 }
 
+// custom struct for rectangle
 struct Rectangle{
     top_left : Point,
     bottom_right : Point,
 }
 
-// custom display for a struct
+// custom display for struct rectangle
 impl fmt::Display for Rectangle{
     fn fmt(&self, f: &mut fmt::Formatter)-> fmt::Result{
         write!(f, "\n\tTop left point is: {},\n\tBottom right point is: {}", self.top_left, self.bottom_right)
     }
 }
 
-// custom function
+// defining additional functions for struct Rectangle
 impl Rectangle{
+
+    // To calculate area of rectangle
     fn area(&self) -> f64{
         ((self.top_left.x - self.bottom_right.x) * (self.top_left.y - self.bottom_right.y)).abs()
     }
 
+    // To calculate it's width
     fn width(&self) -> f64{
         (self.bottom_right.x - self.top_left.x).abs()
     }
 
+    // To calculate it's height
     fn height(&self) -> f64{
         (self.top_left.y - self.bottom_right.y).abs()
     }
 }
 
+// function for creating square using Rectangle struct
 fn square(pair: (Point, f64)) -> Rectangle{
     let x = pair.0.x - pair.1;
     let y = pair.0.y - pair.1;
     Rectangle{
         top_left: pair.0,
-        bottom_right: Point{x: x, y: y},
+        bottom_right: Point{x, y },
     }
 }
 

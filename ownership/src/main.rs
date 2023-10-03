@@ -48,36 +48,41 @@ fn main() {
     println!();
 
     println!("REFERENCE USAGE WITH STRING MODIFICATION:");
-    let size = reference_length(&s2);
+    let size = reference_length(&s2); // Here we take the reference of the original string
+                                               // and calculate it's length
     println!("s2 size is \"{}\"", size);
-    reference_modification(&mut s2);
+
+    reference_modification(&mut s2);  // taking the pointer of the original string and then
+                                         // modifying it with the help of mut
 
     println!();
     println!("****************************************************");
     println!();
 
     println!("SLICES");
-    refrence_slice(&s2[4..10]);
+    reference_slice(&s2[4..10]); // Getting the slices of a string
 
 }
 
 
 fn take_and_give_ownership(s:String) -> String{
     let mut modified_string = s;
-    modified_string.push_str(",this is something new!"); // This function does not return anything
+    modified_string.push_str(",this is something new!");
     modified_string
 }
 
 fn reference_length(s: &String) -> usize {
     println!("s2 in reference_length is \"{}\"", s);
-    s.len()
+    s.len() // calculating and returning string length
 }
 
 fn reference_modification(s: &mut String) {
-    s.push_str(", modified the reference");
+    s.push_str(", modified the reference"); // modifying the reference without returning
+                                                  // anything
     println!("modified string is \"{}\"", s);
 }
 
-fn refrence_slice(s: &str){
+// displaying slice(part) of the original string
+fn reference_slice(s: &str){
     println!("Reference slice from index 4 to 10 is \"{}\"", s);
 }
