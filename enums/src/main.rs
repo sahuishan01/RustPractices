@@ -4,6 +4,7 @@ enum MType{
     Received,
 }
 
+
 // enum for definitions inside of a Message (useful when combined with structs)
 enum Message{
     Type (MType), // for type of message
