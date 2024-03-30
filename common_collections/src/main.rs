@@ -104,7 +104,7 @@ fn main() {
     }
     
     println!("Modifying value based on previous value");
-    for (_i, mut value) in &mut color_map{
+    for (_i, value) in &mut color_map{
         *value *= 2;
     }
     
